@@ -10,7 +10,7 @@ func main() {
 
 	err := http.ListenAndServe(":3000", nil)
 	if err != nil {
-		fmt.Printf("server error: %s\n", err)
+		fmt.Printf("Hodor server error: %s\n", err)
 	}
 }
 
