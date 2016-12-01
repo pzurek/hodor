@@ -8,9 +8,9 @@ import (
 func main() {
 	http.HandleFunc("/", handler)
 
-	err := http.ListenAndServe(":3000", nil)
+	err := http.ListenAndServe(":3013", nil)
 	if err != nil {
-		fmt.Printf("Hodor server error: %s\n", err)
+		fmt.Printf("Server error: %s\n", err)
 	}
 }
 
