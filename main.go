@@ -15,7 +15,9 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("---***### Incoming request ###***---\n")
+	fmt.Println("---***### Incoming request ###***---")
+	fmt.Println()
+
 	fmt.Printf("Request path: %v%v\n", r.Host, r.URL.Path)
 	fmt.Println("Headers:")
 	for k, v := range r.Header {
@@ -24,6 +26,28 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Printf("          %v\n", hv)
 		}
 	}
-	fmt.Println("\n\n")
+
+	// Processing the form
+	err := r.ParseForm()
+	if err != nil {
+		fmt.Println("Failed to parse the form")
+	}
+
+	if len(r.Form) > 0 {
+		fmt.Println("Fields in the Form:")
+		for k := range r.Form {
+			fmt.Println(k)
+		}
+	}
+
+	// Extracting the payload
+	payload := r.Form["payload"]
+
+	if payload != nil {
+		fmt.Println("Payload:")
+		fmt.Printf("%v\n", payload)
+	}
+
+	fmt.Println()
 	w.WriteHeader(http.StatusNoContent)
 }
