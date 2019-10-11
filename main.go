@@ -8,7 +8,7 @@ import (
 func main() {
 	http.HandleFunc("/", handler)
 
-	err := http.ListenAndServe(":3013", nil)
+	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		fmt.Printf("Server error: %s\n", err)
 	}
@@ -49,5 +49,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println()
-	w.WriteHeader(http.StatusNoContent)
+	w.WriteHeader(http.StatusOK)
 }
